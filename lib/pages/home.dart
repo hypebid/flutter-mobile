@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hypebid/comp/navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           ],
         )
       ),
+      bottomNavigationBar: BtmNavigationBar(),
     );
   }
 }
-

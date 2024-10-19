@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:hypebid/theme.dart';
-import 'package:hypebid/comp/navigation_bar.dart';
+import 'package:hypebid/pages/login.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           tertiary: CustomScheme.darkTertiary
         )
       ),
-      home: const NavigationPage(),
+      home: const LoginPage(title: "Login"),
     );
   }
 }

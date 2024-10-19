@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hypebid/comp/navigation_bar.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key, required this.title});
@@ -22,6 +23,7 @@ class _SearchPageState extends State<Search> {
           ],
         ),
       ),
+      bottomNavigationBar: BtmNavigationBar(),
     );
   }
 }
