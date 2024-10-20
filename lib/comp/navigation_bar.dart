@@ -17,8 +17,6 @@ class BtmNavigationBar extends StatefulWidget{
 class _BtmNavigationBarState extends State<BtmNavigationBar> {
 
   void _onItemTapped(int index) {
-    print("Index: " + index.toString());
-
     Navigator.push(
       context,
       PageTransition(
