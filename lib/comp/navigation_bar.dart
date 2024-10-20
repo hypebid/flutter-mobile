@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+
 import 'package:hypebid/pages/search.dart';
 import 'package:hypebid/pages/home.dart';
+import 'package:hypebid/theme.dart';
 
 class BtmNavigationBar extends StatefulWidget{
   const BtmNavigationBar({super.key});
@@ -16,28 +19,24 @@ class _BtmNavigationBarState extends State<BtmNavigationBar> {
     setState(() {
       _selectedIndex = index;
     });
-    if (index == 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage(title: 'Home'))
-      );
-    } else if (index == 1) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const Search(title: 'Search')),
-      );
-    } else if (index == 2) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage(title: 'Notifications'))
-      );
-    } else if (index == 3) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage(title: 'Profile'))
-      );
-    }
+
+    Navigator.push(
+      context,
+      PageTransition(
+        type: PageTransitionType.fade,
+        duration: const Duration(milliseconds: 1),
+        child: _pages[index]
+      ),
+    );
+
   }
+
+  final List<Widget> _pages = [
+    const HomePage(title: 'Home'),
+    const Search(title: 'Search'),
+    const HomePage(title: 'Notifications'),
+    const HomePage(title: 'Profile'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +59,9 @@ class _BtmNavigationBarState extends State<BtmNavigationBar> {
       ),
     ],
       currentIndex: _selectedIndex,
-      onTap: _onItemTapped
+      onTap: _onItemTapped,
+      selectedItemColor: CustomScheme.primary,
+      unselectedItemColor: Colors.grey,
     );
   }
 }
