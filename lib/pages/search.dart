@@ -23,7 +23,7 @@ class _SearchPageState extends State<Search> {
           ],
         ),
       ),
-      bottomNavigationBar: BtmNavigationBar(),
+      bottomNavigationBar: BtmNavigationBar(navIndex: 1),
     );
   }
 }

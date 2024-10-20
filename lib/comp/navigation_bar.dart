@@ -6,19 +6,18 @@ import 'package:hypebid/pages/home.dart';
 import 'package:hypebid/theme.dart';
 
 class BtmNavigationBar extends StatefulWidget{
-  const BtmNavigationBar({super.key});
+
+  final int navIndex;
+  const BtmNavigationBar({super.key, required this.navIndex});
 
   @override
   State<BtmNavigationBar>createState() => _BtmNavigationBarState();
 }
 
 class _BtmNavigationBarState extends State<BtmNavigationBar> {
-  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    print("Index: " + index.toString());
 
     Navigator.push(
       context,
@@ -43,25 +42,31 @@ class _BtmNavigationBarState extends State<BtmNavigationBar> {
     return BottomNavigationBar(items: const <BottomNavigationBarItem> [
       BottomNavigationBarItem(
         icon: Icon(Icons.home),
-        label: 'Home',
+        label: '',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.search),
-        label: 'Search',
+        label: '',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.message),
-        label: 'Notifications',
+        label: '',
       ),
       BottomNavigationBarItem(
         icon: Icon(Icons.person),
-        label: 'Profile',
+        label: '',
       ),
     ],
-      currentIndex: _selectedIndex,
+      currentIndex: widget.navIndex,
       onTap: _onItemTapped,
       selectedItemColor: CustomScheme.primary,
       unselectedItemColor: Colors.grey,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      selectedFontSize: 32,
+      unselectedFontSize: 32,
+      selectedIconTheme: const IconThemeData(size: 32),
+      unselectedIconTheme: const IconThemeData(size: 32),
     );
   }
 }

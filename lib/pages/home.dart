@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           ],
         )
       ),
-      bottomNavigationBar: BtmNavigationBar(),
+      bottomNavigationBar: BtmNavigationBar(navIndex: 0),
     );
   }
 }
