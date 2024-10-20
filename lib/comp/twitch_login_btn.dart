@@ -32,7 +32,7 @@ class TwitchLoginBtn extends StatelessWidget {
           SizedBox(width: 8),
           Text(
             // 'Sign up with Twitch: ${dotenv.env['FOO'] ?? 'N/A'}',
-            'Sign up with Twitch',
+            'Sign in with Twitch',
             style: TextStyle(color: Colors.white),
           ),
         ],

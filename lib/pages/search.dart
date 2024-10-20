@@ -14,6 +14,29 @@ class Search extends StatefulWidget {
 
 class _SearchPageState extends State<Search> {
   final TextEditingController _searchController = TextEditingController();
+  final List<SearchResultItemCard> searchResults = [
+    const SearchResultItemCard(
+      streamerName: 'GiantWaffle',
+      streamerTag: 'GW',
+      percentage: '10.46%',
+      value: '147.05',
+      isUp: true,
+    ),
+    const SearchResultItemCard(
+      streamerName: 'Lirik',
+      streamerTag: 'LR',
+      percentage: '5.03%',
+      value: '632.85',
+      isUp: true,
+    ),
+    const SearchResultItemCard(
+      streamerName: 'xqc',
+      streamerTag: 'XQC',
+      percentage: '-32.03%',
+      value: '396.24',
+      isUp: false,
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +53,27 @@ class _SearchPageState extends State<Search> {
         ),
       ),
       body: ListView.builder(
-        itemCount: 5,
+        itemCount: searchResults.length,
         itemBuilder: (context, index) {
-          return const SearchResultItem(
-            streamerName: 'GiantWaffle',
-            percentage: '10.46%',
-            value: '147.05 hu',
-            isUp: true,
+          final itemData = searchResults[index];
+          return Column(
+            children: [
+              SearchResultItemCard(
+                streamerName: itemData.streamerName,
+                streamerTag: itemData.streamerTag,
+                percentage: itemData.percentage,
+                value: itemData.value,
+                isUp: itemData.isUp,
+              ),
+              const Divider(
+                indent: 24,
+                endIndent: 24,
+                color: CustomScheme.secondaryText,
+                thickness: 1,
+              ),
+            ],
           );
+
         },
       ),
       bottomNavigationBar: const BtmNavigationBar(navIndex: 1),
