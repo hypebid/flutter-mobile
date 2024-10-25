@@ -7,6 +7,7 @@ class SearchResultItemCard extends StatelessWidget {
   final String percentage;
   final String value;
   final bool isUp;
+  final String diff;
 
   const SearchResultItemCard({
     super.key,
@@ -15,6 +16,7 @@ class SearchResultItemCard extends StatelessWidget {
     required this.percentage,
     required this.value,
     required this.isUp,
+    required this.diff,
   });
 
   @override
@@ -112,7 +114,7 @@ class SearchResultItemCard extends StatelessWidget {
                         size: 32,
                       ),
                       Text(
-                        '($percentage)',
+                        '($percentage%)',
                         style: TextStyle(
                           fontFamily: 'Inter',
                           color: isUp ? CustomScheme.accent4 : CustomScheme.accent3,
