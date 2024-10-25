@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Import FontAwesome icons
 // import 'package:hypebid/comp/navigation_bar.dart';
 import 'package:hypebid/comp/search_result_card.dart';
 import 'package:hypebid/theme.dart';
@@ -134,10 +133,10 @@ class _SearchDetailsState extends State<SearchDetails> {
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(-1, -1),
-                                child: FaIcon(
+                                child: Icon(
                                   widget.searchData.isUp
-                                  ? FontAwesomeIcons.circleUp
-                                  : FontAwesomeIcons.circleDown,
+                                  ? Icons.keyboard_double_arrow_up
+                                  : Icons.keyboard_double_arrow_down,
                                   color: widget.searchData.isUp
                                     ? CustomScheme.accent4
                                     : CustomScheme.accent3,
@@ -180,36 +179,6 @@ class _SearchDetailsState extends State<SearchDetails> {
                 child: Text(
                   'Line Chart Goes Here'
                 )
-                // FlutterFlowLineChart(
-                //   data: [
-                //     FFLineChartData(
-                //       xData: [],
-                //       yData: [],
-                //       settings: LineChartBarData(
-                //         color: CustomScheme.primary,
-                //         barWidth: 3,
-                //         isCurved: true,
-                //         dotData: FlDotData(show: false),
-                //         belowBarData: BarAreaData(
-                //           show: true,
-                //           color: Color(0x4C9146FF),
-                //         ),
-                //       ),
-                //     )
-                //   ],
-                //   chartStylingInfo: ChartStylingInfo(
-                //     backgroundColor: CustomScheme
-                //         .secondaryBackground,
-                //     showBorder: false,
-                //   ),
-                //   axisBounds: AxisBounds(),
-                //   xAxisLabelInfo: AxisLabelInfo(
-                //     reservedSize: 32,
-                //   ),
-                //   yAxisLabelInfo: AxisLabelInfo(
-                //     reservedSize: 40,
-                //   ),
-                // ),
               ),
             ),
             Align(
