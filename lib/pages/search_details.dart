@@ -17,7 +17,6 @@ class _SearchDetailsState extends State<SearchDetails> {
 
   @override
   Widget build(BuildContext context) {
-    print("Building Details page...");
     return Scaffold(
       body: Center(
         // child: TwitchLoginBtn(),
@@ -33,7 +32,7 @@ class _SearchDetailsState extends State<SearchDetails> {
           ],
         )
       ),
-      bottomNavigationBar: const BtmNavigationBar(navIndex: 0),
+      bottomNavigationBar: const BtmNavigationBar(navIndex: 1),
     );
   }
 }

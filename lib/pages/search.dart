@@ -43,6 +43,7 @@ class _SearchPageState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: TextField(
           controller: _searchController,
           decoration: const InputDecoration(
@@ -62,11 +63,12 @@ class _SearchPageState extends State<Search> {
               // Navigate to SearchDetails page
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => SearchDetails(
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) => SearchDetails(
                     title: 'Search Details',
                     searchData: itemData,
                   ),
+                  transitionDuration: Duration.zero, // Set transition duration to zero
                 ),
               );
             },

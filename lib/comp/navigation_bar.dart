@@ -47,7 +47,7 @@ class _BtmNavigationBarState extends State<BtmNavigationBar> {
         label: '',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.message),
+        icon: Icon(Icons.swap_horiz),
         label: '',
       ),
       BottomNavigationBarItem(
