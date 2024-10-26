@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hypebid/chart/line_chart.dart';
 // import 'package:hypebid/comp/navigation_bar.dart';
 import 'package:hypebid/comp/search_result_card.dart';
 import 'package:hypebid/theme.dart';
@@ -176,9 +177,7 @@ class _SearchDetailsState extends State<SearchDetails> {
               child: SizedBox(
                 width: MediaQuery.sizeOf(context).width,
                 height: MediaQuery.sizeOf(context).height * 0.33,
-                child: Text(
-                  'Line Chart Goes Here'
-                )
+                child: StreamerLineChart(),
               ),
             ),
             Align(
