@@ -37,9 +37,17 @@ class _BtmNavigationBarState extends State<BtmNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(items: const <BottomNavigationBarItem> [
+    return BottomNavigationBar(items: <BottomNavigationBarItem> [
       BottomNavigationBarItem(
-        icon: Icon(Icons.home),
+        icon: Text(
+          "ƕ",
+          style: TextStyle(
+            fontSize: widget.navIndex == 0 ? 32 : 32, // Adjust size based on selection
+            color: widget.navIndex == 0
+                ? CustomScheme.primary
+                : Colors.grey, // Adjust color based on selection
+          ),
+        ), 
         label: '',
       ),
       BottomNavigationBarItem(
