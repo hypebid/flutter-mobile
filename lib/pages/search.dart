@@ -15,7 +15,7 @@ class Search extends StatefulWidget {
 
 class _SearchPageState extends State<Search> {
   final TextEditingController _searchController = TextEditingController();
-  final List<SearchResultItemCard> searchResults = [
+  final List<SearchResultItemCard> allSearchResults = [
     const SearchResultItemCard(
       streamerName: 'GiantWaffle',
       streamerTag: 'GW',
@@ -41,6 +41,21 @@ class _SearchPageState extends State<Search> {
       isUp: false,
     ),
   ];
+  List<SearchResultItemCard> filteredSearchResults = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredSearchResults = allSearchResults; // Initialize with all results
+  }
+
+  void _filterSearchResults(String searchTerm) {
+    filteredSearchResults = allSearchResults.where((item) =>
+        item.streamerName.toLowerCase().contains(searchTerm.toLowerCase()) ||
+        item.streamerTag.toLowerCase().contains(searchTerm.toLowerCase())
+    ).toList();
+    setState(() {}); // Update UI with filtered results
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +64,7 @@ class _SearchPageState extends State<Search> {
         automaticallyImplyLeading: false,
         title: TextField(
           controller: _searchController,
+          onChanged: (searchTerm) => _filterSearchResults(searchTerm),
           decoration: const InputDecoration(
             hintText: 'Search Streamers',
             prefixIcon: Icon(Icons.search),
@@ -58,16 +74,17 @@ class _SearchPageState extends State<Search> {
         ),
       ),
       body: ListView.builder(
-        itemCount: searchResults.length,
+        itemCount: filteredSearchResults.length,
         itemBuilder: (context, index) {
-          final itemData = searchResults[index];
-          return GestureDetector( // Wrap the entire SearchResultItemCard
+          final itemData = filteredSearchResults[index];
+          return GestureDetector(
             onTap: () {
               // Navigate to SearchDetails page
               Navigator.push(
                 context,
                 PageRouteBuilder(
-                  pageBuilder: (context, animation, secondaryAnimation) => SearchDetails(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      SearchDetails(
                     title: 'Search Details',
                     searchData: itemData,
                   ),
@@ -93,8 +110,8 @@ class _SearchPageState extends State<Search> {
                     thickness: 1,
                   ),
                 ],
-              )
-            )
+              ),
+            ),
           );
         },
       ),
