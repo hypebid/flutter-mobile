@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:hypebid/theme.dart';
 
 class StreamerLineChart extends StatefulWidget {
-  const StreamerLineChart({super.key});
+  // Determines if the data should show 1H, 1D, 1W, 1Q, or 1Y
+  // 0-6 respectively
+  final int dataWindow;
+
+  const StreamerLineChart({super.key, required this.dataWindow});
 
   @override
   State<StreamerLineChart> createState() => _StreamerLineChartState();

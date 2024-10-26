@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hypebid/chart/line_chart.dart';
+import 'package:hypebid/comp/line_chart_button.dart';
 // import 'package:hypebid/comp/navigation_bar.dart';
 import 'package:hypebid/comp/search_result_card.dart';
 import 'package:hypebid/theme.dart';
@@ -15,6 +16,14 @@ class SearchDetails extends StatefulWidget {
 }
 
 class _SearchDetailsState extends State<SearchDetails> {
+  int selectedDataWindow = 2; // Initial selected time period (1 week)
+
+  void handleDataWindowChange(int newWindow) {
+    setState(() {
+      selectedDataWindow = newWindow;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -177,7 +186,7 @@ class _SearchDetailsState extends State<SearchDetails> {
               child: SizedBox(
                 width: MediaQuery.sizeOf(context).width,
                 height: MediaQuery.sizeOf(context).height * 0.33,
-                child: StreamerLineChart(),
+                child: StreamerLineChart(dataWindow: selectedDataWindow),
               ),
             ),
             Align(
@@ -191,6 +200,17 @@ class _SearchDetailsState extends State<SearchDetails> {
                       flex: 1,
                       child: Align(
                         alignment: AlignmentDirectional(0, -1),
+                        child: LineChartBtn(
+                          btnText: '1H',
+                          focused: selectedDataWindow == 0,
+                          onPressed: () => handleDataWindowChange(0),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Align(
+                        alignment: AlignmentDirectional(0, -1),
                         child: Container(
                           constraints: BoxConstraints(
                             minHeight: 32,
@@ -198,26 +218,10 @@ class _SearchDetailsState extends State<SearchDetails> {
                           decoration: BoxDecoration(),
                           child: Align(
                             alignment: AlignmentDirectional(0, 0),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: CustomScheme.primary,
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  '1H',
-                                  style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    color: CustomScheme
-                                        .primaryBackground,
-                                    fontSize: 16,
-                                    letterSpacing: 0.0,
-                                  ),
-                                ),
-                              ),
+                            child: LineChartBtn(
+                              btnText: '1D',
+                              focused: selectedDataWindow == 1, 
+                              onPressed: () => handleDataWindowChange(1),
                             ),
                           ),
                         ),
@@ -234,26 +238,10 @@ class _SearchDetailsState extends State<SearchDetails> {
                           decoration: BoxDecoration(),
                           child: Align(
                             alignment: AlignmentDirectional(0, 0),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: CustomScheme.primary,
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  '1D',
-                                  style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    color: CustomScheme
-                                        .primaryBackground,
-                                    fontSize: 16,
-                                    letterSpacing: 0.0,
-                                  ),
-                                ),
-                              ),
+                            child: LineChartBtn(
+                              btnText: '1W',
+                              focused: selectedDataWindow == 2, 
+                              onPressed: () => handleDataWindowChange(2),
                             ),
                           ),
                         ),
@@ -270,26 +258,10 @@ class _SearchDetailsState extends State<SearchDetails> {
                           decoration: BoxDecoration(),
                           child: Align(
                             alignment: AlignmentDirectional(0, 0),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: CustomScheme.primary,
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  '1W',
-                                  style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    color: CustomScheme
-                                        .primaryBackground,
-                                    fontSize: 16,
-                                    letterSpacing: 0.0,
-                                  ),
-                                ),
-                              ),
+                            child: LineChartBtn(
+                              btnText: '1Q',
+                              focused: selectedDataWindow == 3, 
+                              onPressed: () => handleDataWindowChange(3),
                             ),
                           ),
                         ),
@@ -306,62 +278,10 @@ class _SearchDetailsState extends State<SearchDetails> {
                           decoration: BoxDecoration(),
                           child: Align(
                             alignment: AlignmentDirectional(0, 0),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: CustomScheme.primary,
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  '1Q',
-                                  style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    color: CustomScheme
-                                        .primaryBackground,
-                                    fontSize: 16,
-                                    letterSpacing: 0.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Align(
-                        alignment: AlignmentDirectional(0, -1),
-                        child: Container(
-                          constraints: BoxConstraints(
-                            minHeight: 32,
-                          ),
-                          decoration: BoxDecoration(),
-                          child: Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: CustomScheme.primary,
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  '1Y',
-                                  style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    color: CustomScheme
-                                        .primaryBackground,
-                                    fontSize: 16,
-                                    letterSpacing: 0.0,
-                                  ),
-                                ),
-                              ),
+                            child: LineChartBtn(
+                              btnText: '1Y',
+                              focused: selectedDataWindow == 4, 
+                              onPressed: () => handleDataWindowChange(4),
                             ),
                           ),
                         ),
