@@ -28,12 +28,16 @@ class TwitchLoginBtn extends StatelessWidget {
           FaIcon(
             FontAwesomeIcons.twitch,
             color: Colors.white, // Adjust icon color if needed
+            size: 32,
           ),
           SizedBox(width: 8),
           Text(
             // 'Sign up with Twitch: ${dotenv.env['FOO'] ?? 'N/A'}',
             'Sign in with Twitch',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
           ),
         ],
       ),
