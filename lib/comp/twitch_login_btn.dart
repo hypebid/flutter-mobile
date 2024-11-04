@@ -16,6 +16,7 @@ class TwitchLoginBtn extends StatefulWidget {
 
 class _TwitchLoginBtnState extends State<TwitchLoginBtn> {
   Future<void> _launchURL() async {
+    // TODO: make this a parameter and not hard-coded.
     final Uri apiUrl = Uri.parse(
         'https://container-service-1.c0mwt45dj7y3j.us-east-2.cs.amazonlightsail.com/api/v1/auth/twitch/login');
     final response = await http.get(apiUrl);
@@ -28,12 +29,14 @@ class _TwitchLoginBtnState extends State<TwitchLoginBtn> {
       if (await launchUrl(Uri.parse(authUrl))) {
         // User returned from browser, navigate to homepage
         Navigator.pushReplacement(
+          // TODO: Fix this somehow? It's an info warning and not an error.
           context,
           MaterialPageRoute(builder: (context) => const HomePage(title: 'HomePage',)),
         );
       }
     } else {
       // Handle API error
+      // TODO: Do something other than print
       print('Error fetching API data: ${response.statusCode}');
     }
   }
